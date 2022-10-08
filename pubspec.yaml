@@ -39,6 +39,8 @@ dependencies:
   flutter_svg: ^1.1.5
   google_fonts: ^3.0.1
   get: ^4.6.5
+  timeline_tile: ^2.0.0
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
