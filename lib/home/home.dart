@@ -13,13 +13,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late ScrollController homeScrollController;
   int featureSelectedIndex = 0;
+
+  @override
+  void initState() {
+    homeScrollController = ScrollController(initialScrollOffset: 100);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor:Colors.black,
         leading: SvgPicture.asset(
           "assets/icons/logo.svg",
           color: Colors.white,
@@ -30,7 +38,15 @@ class _HomeState extends State<Home> {
         elevation: 0,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -44,7 +60,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  1100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -58,7 +82,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  2100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -72,7 +104,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  3100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -86,7 +126,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  4100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -100,7 +148,15 @@ class _HomeState extends State<Home> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  homeScrollController.position.maxScrollExtent,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -116,6 +172,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SingleChildScrollView(
+        controller: homeScrollController,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -384,6 +441,212 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
+              ],
+            ),
+            Container(
+              height: Get.height,
+              width: Get.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/game.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(100.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "MILESTONE",
+                      style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontSize: 64,
+                        fontWeight: FontWeight.w900,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.width / 8,
+                    ),
+                    SizedBox(
+                      width: 1000,
+                      height: 300,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: milestoneTitle.length,
+                        itemBuilder: (context, index) {
+                          return TimelineTile(
+                            axis: TimelineAxis.horizontal,
+                            alignment: TimelineAlign.center,
+                            beforeLineStyle: const LineStyle(
+                              color: Colors.transparent,
+                              thickness: 0,
+                            ),
+                            afterLineStyle: const LineStyle(
+                              color: Colors.transparent,
+                              thickness: 0,
+                            ),
+                            indicatorStyle: const IndicatorStyle(
+                              color: Colors.transparent,
+                              width: 0,
+                              indicator: SizedBox(),
+                            ),
+                            hasIndicator: false,
+                            endChild: index % 2 == 0
+                                ? Container(
+                                    constraints: const BoxConstraints(
+                                      maxHeight: 150,
+                                      minHeight: 100,
+                                      maxWidth: 170,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          milestoneTitle[index],
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w900,
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          milestoneSubTitle[index]
+                                              .toUpperCase(),
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 14,
+                                            // fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : const SizedBox(
+                                    height: 150,
+                                    width: 170,
+                                  ),
+                            startChild: index % 2 != 0
+                                ? Container(
+                                    constraints: const BoxConstraints(
+                                      maxHeight: 150,
+                                      maxWidth: 170,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          milestoneTitle[index],
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w900,
+                                            fontStyle: FontStyle.italic,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Text(
+                                          milestoneSubTitle[index],
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : const SizedBox(
+                                    height: 150,
+                                    width: 170,
+                                  ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            Container(
+              height: Get.height * 1,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                      "CANIDAE FAMILY NFTS",
+                      style: GoogleFonts.montserrat(
+                        color: Colors.black,
+                        fontSize: 48,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 80,
+                  ),
+                  Container(
+                    height: Get.height * 0.80,
+                    width: Get.width,
+                    decoration: const BoxDecoration(
+                      // color: Colors.red,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/game-1.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 80, right: 280),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/images/card.png"),
+                          Image.asset("assets/images/card.png"),
+                          Image.asset("assets/images/card-2.png"),
+                          Image.asset("assets/images/card.png"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // const SizedBox(
+            //   height: 80,
+            // ),
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Positioned(
+                  top: 120,
+                  child: Text(
+                    "PLAYER'S REVENUE",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.black,
+                      fontSize: 48,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: Get.width,
+                  child: Image.asset(
+                    "assets/images/players.png",
+                    fit: BoxFit.cover,
+                  ),
+                )
               ],
             ),
             SizedBox(

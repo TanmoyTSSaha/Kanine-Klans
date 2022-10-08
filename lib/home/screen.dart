@@ -13,7 +13,7 @@ class _ScreensState extends State<Screens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -244,11 +244,11 @@ class _ScreensState extends State<Screens> {
                       ),
                     ),
                   ),
-                 // SizedBox(height: 50,),
+                  // SizedBox(height: 50,),
                   Container(
-                    height: Get.height*0.90,
+                    height: Get.height * 0.90,
                     width: Get.width,
-                       decoration: const BoxDecoration(
+                    decoration: const BoxDecoration(
                       // color: Colors.red,
                       image: DecorationImage(
                         image: AssetImage("assets/images/players.png"),
@@ -258,7 +258,7 @@ class _ScreensState extends State<Screens> {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
