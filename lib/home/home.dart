@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor:Colors.black,
+        backgroundColor: Colors.black,
         leading: SvgPicture.asset(
           "assets/icons/logo.svg",
           color: Colors.white,
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
               "HOME",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
               "ABOUT US",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
               "FEATURES",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
               "MILESTONE",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  4100,
+                  4000,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -142,7 +142,7 @@ class _HomeState extends State<Home> {
               "KANNES",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -471,8 +471,8 @@ class _HomeState extends State<Home> {
                       height: Get.width / 8,
                     ),
                     SizedBox(
-                      width: 1000,
-                      height: 300,
+                      width: 1200,
+                      height: 400,
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -501,7 +501,7 @@ class _HomeState extends State<Home> {
                                     constraints: const BoxConstraints(
                                       maxHeight: 150,
                                       minHeight: 100,
-                                      maxWidth: 170,
+                                      maxWidth: 200,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -536,7 +536,8 @@ class _HomeState extends State<Home> {
                                 ? Container(
                                     constraints: const BoxConstraints(
                                       maxHeight: 150,
-                                      maxWidth: 170,
+                                      minHeight: 100,
+                                      maxWidth: 200,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -629,7 +630,7 @@ class _HomeState extends State<Home> {
               alignment: Alignment.topCenter,
               children: [
                 Positioned(
-                  top: 120,
+                  top: 100,
                   child: Text(
                     "PLAYER'S REVENUE",
                     style: GoogleFonts.montserrat(
