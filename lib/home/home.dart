@@ -195,7 +195,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/images/Line.png"),
-                    const SizedBox(height: 36),
+                    SizedBox(height: Get.height * 0.03),
                     Text(
                       "Kanine Klans is the first-ever Canidae Family Gaming Universe with a vision\nto give its users an immersive and interactive gaming experience",
                       style: GoogleFonts.montserrat(
@@ -221,7 +221,7 @@ class _HomeState extends State<Home> {
                 ),
                 Container(
                   width: Get.width,
-                  height: 800,
+                  height: Get.height * 0.8,
                   color: const Color(0xFF151515),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 60,
@@ -284,9 +284,9 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Positioned(
-                  bottom: -110,
+                  bottom: 0,
                   child: SizedBox(
-                    height: 1200,
+                    height: Get.height,
                     child: Image.asset(
                       "assets/images/dog4.png",
                       fit: BoxFit.cover,
@@ -450,10 +450,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(100.0),
+                padding: EdgeInsets.all(Get.height * 0.1),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
                       "MILESTONE",
@@ -465,11 +465,8 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     SizedBox(
-                      height: Get.width / 8,
-                    ),
-                    SizedBox(
-                      width: 1200,
-                      height: 400,
+                      width: Get.height * 1.2,
+                      height: Get.height * 0.4,
                       child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -495,10 +492,10 @@ class _HomeState extends State<Home> {
                             hasIndicator: false,
                             endChild: index % 2 == 0
                                 ? Container(
-                                    constraints: const BoxConstraints(
-                                      maxHeight: 150,
-                                      minHeight: 100,
-                                      maxWidth: 200,
+                                    constraints: BoxConstraints(
+                                      maxHeight: Get.height * 0.15,
+                                      minHeight: Get.height * 0.1,
+                                      maxWidth: Get.height * 0.2,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -525,16 +522,16 @@ class _HomeState extends State<Home> {
                                       ],
                                     ),
                                   )
-                                : const SizedBox(
-                                    height: 150,
-                                    width: 170,
+                                : SizedBox(
+                                    height: Get.height * 0.15,
+                                    width: Get.height * 0.17,
                                   ),
                             startChild: index % 2 != 0
                                 ? Container(
-                                    constraints: const BoxConstraints(
-                                      maxHeight: 150,
-                                      minHeight: 100,
-                                      maxWidth: 200,
+                                    constraints: BoxConstraints(
+                                      maxHeight: Get.height * 0.15,
+                                      minHeight: Get.height * 0.1,
+                                      maxWidth: Get.height * 0.2,
                                     ),
                                     child: Column(
                                       crossAxisAlignment:
@@ -560,9 +557,9 @@ class _HomeState extends State<Home> {
                                       ],
                                     ),
                                   )
-                                : const SizedBox(
-                                    height: 150,
-                                    width: 170,
+                                : SizedBox(
+                                    height: Get.height * 0.15,
+                                    width: Get.height * 0.17,
                                   ),
                           );
                         },
@@ -1160,12 +1157,12 @@ class _HomeState extends State<Home> {
                         'assets/icons/logo.svg',
                         height: Get.height * 0.2,
                         width: Get.height * 0.2,
-                        
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Get.height * 0.06),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Get.height * 0.06),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -1178,12 +1175,11 @@ class _HomeState extends State<Home> {
                         SvgPicture.asset("assets/icons/medium.svg"),
                         SizedBox(width: Get.height * 0.05),
                         Container(
-                          height: Get.height * 0.05,
-                          width: Get.width * 0.09,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
                           ),
+                          padding: EdgeInsets.all(Get.height * 0.012),
                           alignment: Alignment.center,
                           child: Text(
                             "LITE PAPER",
@@ -1207,15 +1203,14 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                      Text(
-                        "© Copyright SYBO 2012 - 2022 ·",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFF4D4D4D),
-                        ),
-                      ),
-
+                  Text(
+                    "© Copyright SYBO 2012 - 2022 ·",
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF4D4D4D),
+                    ),
+                  ),
                 ],
               ),
             ),
