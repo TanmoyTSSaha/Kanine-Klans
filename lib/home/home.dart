@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -15,10 +16,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late ScrollController homeScrollController;
   int featureSelectedIndex = 0;
+  bool animatedOpacity = false;
 
   @override
   void initState() {
-    homeScrollController = ScrollController(initialScrollOffset: 100);
+    homeScrollController =
+        ScrollController(initialScrollOffset: Get.height * 0.1);
     super.initState();
   }
 
@@ -41,7 +44,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  100,
+                  Get.height * 0.1,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -63,7 +66,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  1100,
+                  Get.height,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -85,7 +88,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  2100,
+                  Get.height * 2,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -107,7 +110,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  3100,
+                  Get.height * 3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -129,7 +132,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               setState(() {
                 homeScrollController.animateTo(
-                  4000,
+                  Get.height * 4,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeIn,
                 );
@@ -176,45 +179,45 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //Home
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
                 SizedBox(
                   width: Get.width,
-                  height: 1080,
+                  height: Get.height,
                   child: Image.asset(
                     "assets/images/kk_breed.png",
                     fit: BoxFit.cover,
                   ),
                 ),
-                Positioned(
-                  bottom: 100,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/images/Line.png"),
-                      const SizedBox(height: 36),
-                      Text(
-                        "Kanine Klans is the first-ever Canidae Family Gaming Universe with a vision\nto give its users an immersive and interactive gaming experience",
-                        style: GoogleFonts.montserrat(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 16,
-                          height: 1.5,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset("assets/images/Line.png"),
+                    const SizedBox(height: 36),
+                    Text(
+                      "Kanine Klans is the first-ever Canidae Family Gaming Universe with a vision\nto give its users an immersive and interactive gaming experience",
+                      style: GoogleFonts.montserrat(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 16,
+                        height: 1.5,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
                 ),
               ],
             ),
+            //About us
             Stack(
               alignment: Alignment.topRight,
               children: [
-                SizedBox(
-                  height: 1000,
+                Container(
+                  height: Get.height,
                   width: Get.width,
+                  color: Colors.white,
                 ),
                 Container(
                   width: Get.width,
@@ -292,157 +295,151 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            Stack(
-              alignment: Alignment.centerLeft,
-              children: [
-                SizedBox(
-                  height: 1000,
-                  width: Get.width,
-                ),
-                Positioned(
-                  right: Get.width / 6,
-                  child: SizedBox(
-                    height: 750,
-                    child: Image.asset(
-                      "assets/images/race.png",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 120),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "FEATURES",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 48,
-                          fontWeight: FontWeight.w900,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.black,
+            //Features
+            Container(
+              height: Get.height,
+              width: Get.width,
+              padding: EdgeInsets.symmetric(
+                horizontal: Get.width * 0.075,
+                vertical: Get.height * 0.1,
+              ),
+              color: Colors.white,
+              alignment: Alignment.center,
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.7,
+                    width: Get.width * 0.3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "FEATURES",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 48,
+                            fontWeight: FontWeight.w900,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 30),
-                      ListView.builder(
-                        itemCount: featureList.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                featureSelectedIndex = index;
-                              });
-                            },
-                            child: Container(
-                              constraints: const BoxConstraints(
-                                minHeight: 60,
-                                maxHeight: 200,
-                              ),
-                              child: TimelineTile(
-                                alignment: TimelineAlign.start,
-                                beforeLineStyle: const LineStyle(
-                                  thickness: 8,
-                                  color: Color(0xFFD80202),
+                        const SizedBox(height: 30),
+                        ListView.builder(
+                          itemCount: featureList.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  animatedOpacity = true;
+                                  featureSelectedIndex = index;
+                                  animatedOpacity = false;
+                                });
+                              },
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                  minHeight: 60,
+                                  maxHeight: 200,
                                 ),
-                                afterLineStyle: const LineStyle(
-                                  thickness: 8,
-                                  color: Color(0xFFD80202),
-                                ),
-                                endChild: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const SizedBox(width: 24),
-                                    Text(
-                                      featureList[index],
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
-                                        color: featureSelectedIndex == index
-                                            ? const Color(0xFFB40404)
-                                            : Colors.black,
+                                child: TimelineTile(
+                                  alignment: TimelineAlign.start,
+                                  beforeLineStyle: const LineStyle(
+                                    thickness: 8,
+                                    color: Color(0xFFD80202),
+                                  ),
+                                  afterLineStyle: const LineStyle(
+                                    thickness: 8,
+                                    color: Color(0xFFD80202),
+                                  ),
+                                  endChild: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const SizedBox(width: 24),
+                                      Text(
+                                        featureList[index],
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                          color: featureSelectedIndex == index
+                                              ? const Color(0xFFB40404)
+                                              : Colors.black,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(width: 60),
-                                    featureSelectedIndex == index
-                                        ? Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                featureList[index],
-                                                style: GoogleFonts.montserrat(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFB40404),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 230,
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      const Color(0xFFD9D9D9),
-                                                  borderRadius:
-                                                      BorderRadius.circular(16),
-                                                ),
-                                                padding:
-                                                    const EdgeInsets.all(8),
-                                                child: Text(
-                                                  "Creating one of the most exciting and lucrative gameplay for players."
-                                                      .toUpperCase(),
+                                      const SizedBox(width: 60),
+                                      featureSelectedIndex == index
+                                          ? Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  featureList[index],
                                                   style: GoogleFonts.montserrat(
-                                                    fontSize: 14,
-                                                    color: Colors.black,
-                                                    height: 1.5,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w500,
+                                                    color:
+                                                        const Color(0xFFB40404),
                                                   ),
                                                 ),
-                                              ),
-                                            ],
-                                          )
-                                        : const SizedBox(),
-                                  ],
-                                ),
-                                indicatorStyle: IndicatorStyle(
-                                  width: 36,
-                                  height: 12,
-                                  indicator: Container(
-                                    height: 12,
+                                                Container(
+                                                  width: 230,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xFFD9D9D9),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16),
+                                                  ),
+                                                  padding:
+                                                      const EdgeInsets.all(8),
+                                                  child: Text(
+                                                    "Creating one of the most exciting and lucrative gameplay for players."
+                                                        .toUpperCase(),
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      height: 1.5,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : const SizedBox(),
+                                    ],
+                                  ),
+                                  indicatorStyle: IndicatorStyle(
                                     width: 36,
-                                    decoration: BoxDecoration(
-                                      color: featureSelectedIndex == index
-                                          ? Colors.black
-                                          : Colors.transparent,
-                                      borderRadius: BorderRadius.circular(4),
+                                    height: 12,
+                                    indicator: Container(
+                                      height: 12,
+                                      width: 36,
+                                      decoration: BoxDecoration(
+                                        color: featureSelectedIndex == index
+                                            ? Colors.black
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(4),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 125,
-                  left: Get.width / 4,
-                  right: Get.width / 4,
-                  child: Text(
-                    "Creating one of the most exciting and lucrative gameplay for players."
-                        .toUpperCase(),
-                    style: GoogleFonts.montserrat(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.black,
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: Get.width * 0.55,
+                    child: Image.asset(
+                      featurePictureList[featureSelectedIndex],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            //Milestone
             Container(
               height: Get.height,
               width: Get.width,
@@ -575,63 +572,62 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 60,
-            ),
+            //Canidae Family NFTS
             Container(
-              height: Get.height * 1,
+              height: Get.height,
+              width: Get.width,
+              alignment: Alignment.center,
               color: Colors.white,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                    child: Text(
-                      "CANIDAE FAMILY NFTS",
-                      style: GoogleFonts.montserrat(
-                        color: Colors.black,
-                        fontSize: 48,
-                        fontWeight: FontWeight.w900,
-                      ),
+                  Text(
+                    "CANIDAE FAMILY NFTS",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.black,
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   const SizedBox(
                     height: 80,
                   ),
-                  Container(
-                    height: Get.height * 0.80,
-                    width: Get.width,
-                    decoration: const BoxDecoration(
-                      // color: Colors.red,
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/game-1.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 80, right: 280),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset("assets/images/card.png"),
-                          Image.asset("assets/images/card.png"),
-                          Image.asset("assets/images/card-2.png"),
-                          Image.asset("assets/images/card.png"),
-                        ],
-                      ),
+                  SizedBox(
+                    height: Get.height * 0.4,
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: canidaePictureList.length,
+                      itemBuilder: (context, index) {
+                        return OnHoverEffect(
+                          child: SizedBox(
+                            height: Get.height * 0.4,
+                            // width: Get.width * 0.1,
+                            child: Image.asset(
+                              canidaePictureList[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          SizedBox(width: Get.width * 0.075),
                     ),
                   ),
                 ],
               ),
             ),
-            // const SizedBox(
-            //   height: 80,
-            // ),
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Positioned(
-                  top: 100,
-                  child: Text(
+            //Player Revenue
+            Container(
+              height: Get.height,
+              width: Get.width,
+              color: Colors.white,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
                     "PLAYER'S REVENUE",
                     style: GoogleFonts.montserrat(
                       color: Colors.black,
@@ -640,23 +636,426 @@ class _HomeState extends State<Home> {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: Get.width,
-                  child: Image.asset(
-                    "assets/images/players.png",
-                    fit: BoxFit.cover,
+                  SizedBox(
+                    width: Get.width * 0.5,
+                    child: const Divider(
+                      thickness: 5,
+                      color: Color(0xFFB40404),
+                    ),
                   ),
-                )
-              ],
-            ),
-            SizedBox(
-              width: Get.width,
-              child: Image.asset(
-                "assets/images/background_image.png",
-                fit: BoxFit.cover,
+                  SizedBox(height: Get.height * 0.05),
+                  SizedBox(
+                    width: Get.width * 0.7,
+                    child: Image.asset(
+                      "assets/images/players_revenue.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text(
+                    "Other X2Earn models are based on trends!".toUpperCase(),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 28,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
               ),
             ),
+            //Tokenomics
+            Container(
+              width: Get.width,
+              height: Get.height,
+              color: Colors.black,
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(Get.height * 0.025),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "TOKENOMICS",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 64,
+                      color: Colors.white,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  SizedBox(height: Get.height * 0.05),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      SizedBox(
+                        width: Get.width,
+                        height: Get.height * 0.65,
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.65,
+                        width: Get.height * 0.65,
+                        child: PieChart(
+                          PieChartData(
+                            centerSpaceRadius: Get.height * 0.3,
+                            sections: [
+                              PieChartSectionData(
+                                value: 15,
+                                showTitle: true,
+                                title: "Team",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 18,
+                                showTitle: true,
+                                title: "Treasury",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 19,
+                                showTitle: true,
+                                title: "Development & P2E",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 1.5,
+                                showTitle: true,
+                                title: "Public sale",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 4,
+                                showTitle: true,
+                                title: "Partners and advisors",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 5.50,
+                                showTitle: true,
+                                title: "Private sale(Round 1)",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 8,
+                                showTitle: true,
+                                title: "Private sale(Round 2)",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 12,
+                                showTitle: true,
+                                title: "Marketing",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                              PieChartSectionData(
+                                value: 12,
+                                showTitle: true,
+                                title: "Liquidity & mm",
+                                radius: 8,
+                                color: const Color(0xFFD80202),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: Get.height * 0.5,
+                        width: Get.height * 0.5,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          // borderRadius: BorderRadius.circular(Get.height * 0.5),
+                          border: Border.all(
+                            width: 3,
+                            color: const Color(0xFF373737),
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      Container(
+                        height: Get.height * 0.35,
+                        width: Get.height * 0.35,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: const Color(0xFF1D1D1D),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(11, 5),
+                              blurRadius: 107,
+                              spreadRadius: 0,
+                              color: const Color(0xFFD80202).withOpacity(0.72),
+                            ),
+                          ],
+                        ),
+                        alignment: Alignment.center,
+                        child: RichText(
+                          text: TextSpan(
+                            text: "TOTAL SUPPLY\n",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "1,000,000,000",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Positioned(
+                        right: Get.width * 0.25,
+                        bottom: Get.height * 0.15,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "15%\nTEAM",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        right: Get.width * 0.35,
+                        bottom: 0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "18%\nTREASURE",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: Get.width * 0.235,
+                        bottom: Get.height * 0.2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "19%\nDEVELOPMENT & P2E",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: Get.width * 0.2325,
+                        bottom: Get.height * 0.41,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "1.50%\nPUBLIC SALE",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: Get.width * 0.25,
+                        bottom: Get.height * 0.475,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "4%\nPARTNERS & ADVISORS",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: Get.width * 0.275,
+                        bottom: Get.height * 0.55,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "5.50%\nPRIVATE SALE(ROUND 1)",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        left: Get.width * 0.315,
+                        bottom: Get.height * 0.6,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "8%\nPRIVATE SALE(ROUND 2)",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        right: Get.width * 0.29,
+                        bottom: Get.height * 0.575,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "12%\nMARKETING",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        right: Get.width * 0.23,
+                        bottom: Get.height * 0.4,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "12%\nLIQUIDITY & MM",
+                              style: GoogleFonts.roboto(
+                                fontSize: 16,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFF969696),
+                              ),
+                            ),
+                            SizedBox(
+                              width: Get.width * 0.1,
+                              child: const Divider(
+                                thickness: 3,
+                                color: Color(0xFF969696),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: SvgPicture.asset(
+                      'assets/icons/logo.svg',
+                      height: Get.height * 0.1,
+                      width: Get.height * 0.1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            //Meet the team
             SizedBox(
               height: 100,
               width: Get.width,
@@ -672,6 +1071,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            //Meet the team
             Stack(
               alignment: Alignment.center,
               children: [
@@ -722,6 +1122,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
+            //Contact us
             SizedBox(
               height: 100,
               width: Get.width,
@@ -737,17 +1138,84 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            //Contact us
             Container(
               width: Get.width,
-              height: Get.width / 3,
+              height: Get.width / 5,
               color: Colors.black,
-              alignment: Alignment.bottomRight,
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(
+                horizontal: Get.width * 0.1,
+                // vertical: Get.height * 0.05,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset("assets/icons/linked_in.svg"),
-                  SvgPicture.asset("assets/icons/instagram.svg"),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Opacity(
+                      opacity: 0.5,
+                      child: SvgPicture.asset(
+                        'assets/icons/logo.svg',
+                        height: Get.height * 0.2,
+                        width: Get.height * 0.2,
+                        
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: Get.height * 0.06),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        SvgPicture.asset("assets/icons/discord.svg"),
+                        SizedBox(width: Get.height * 0.05),
+                        SvgPicture.asset("assets/icons/twitter.svg"),
+                        SizedBox(width: Get.height * 0.05),
+                        SvgPicture.asset("assets/icons/linkedin.svg"),
+                        SizedBox(width: Get.height * 0.05),
+                        SvgPicture.asset("assets/icons/medium.svg"),
+                        SizedBox(width: Get.height * 0.05),
+                        Container(
+                          height: Get.height * 0.05,
+                          width: Get.width * 0.09,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "LITE PAPER",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w900,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          "Privacy policy",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF4D4D4D),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                      Text(
+                        "© Copyright SYBO 2012 - 2022 ·",
+                        style: GoogleFonts.montserrat(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF4D4D4D),
+                        ),
+                      ),
+
                 ],
               ),
             ),
@@ -757,3 +1225,49 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+class OnHoverEffect extends StatefulWidget {
+  final Widget child;
+  const OnHoverEffect({
+    super.key,
+    required this.child,
+  });
+
+  @override
+  State<OnHoverEffect> createState() => _OnHoverEffectState();
+}
+
+class _OnHoverEffectState extends State<OnHoverEffect> {
+  bool isHovered = false;
+  @override
+  Widget build(BuildContext context) {
+    final hoveredTransform = Matrix4.identity()
+      ..scale(
+        1.2,
+        1.2,
+      )
+      ..translate(
+        -25,
+        -25,
+        0,
+      );
+    final transform = isHovered ? hoveredTransform : Matrix4.identity();
+
+    return MouseRegion(
+      onEnter: (event) => onEnter(true),
+      onExit: (event) => onEnter(false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        transform: transform,
+        alignment: Alignment.center,
+        child: widget.child,
+      ),
+    );
+  }
+
+  void onEnter(bool isHovered) => setState(() {
+        this.isHovered = isHovered;
+      });
+}
+
+//This code is done by Tanmoy Saha and Durgesh Kumar Singh

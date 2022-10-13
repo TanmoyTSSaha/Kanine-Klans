@@ -7,6 +7,22 @@ List<String> featureList = [
   "TOURNAMENTS",
 ];
 
+List<String> featurePictureList = [
+  'assets/images/race.png',
+  'assets/images/betting.png',
+  'assets/images/breed.png',
+  'assets/images/streaming.png',
+  'assets/images/nft.png',
+  'assets/images/tournament.png',
+];
+
+List<String> canidaePictureList = [
+  'assets/images/Dog.png',
+  'assets/images/Fox.png',
+  'assets/images/Jackal.png',
+  'assets/images/Wolf.png',
+];
+
 List<String> teamImageList = [
   "assets/images/druv.png",
   "assets/images/person.png",
