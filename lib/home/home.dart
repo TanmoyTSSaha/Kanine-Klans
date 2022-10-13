@@ -221,7 +221,7 @@ class _HomeState extends State<Home> {
                 ),
                 Container(
                   width: Get.width,
-                  height: Get.height * 0.8,
+                  height: Get.height * 0.85,
                   color: const Color(0xFF151515),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 60,
@@ -268,11 +268,11 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 12,
-                        ),
+                        padding:
+                            EdgeInsets.symmetric(vertical: Get.height * 0.012),
                         child: Text(
                           "Kanine Klans has a unique ecosystem that allows players to \nenter any race, for minimal price or free. With this economic\nmodel, the gameplay is very competitive, however, the\nrewards are still lucrative.\nPlayers compete against many other racers to earn a top\nposition. All players inside the game earn \$KK tokens, the\nplatform's utility token.",
+                          overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.montserrat(
                             fontWeight: FontWeight.w300,
                             color: Colors.white,
@@ -305,135 +305,157 @@ class _HomeState extends State<Home> {
               ),
               color: Colors.white,
               alignment: Alignment.center,
-              child: Row(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: Get.height * 0.7,
-                    width: Get.width * 0.3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "FEATURES",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 48,
-                            fontWeight: FontWeight.w900,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.black,
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        ListView.builder(
-                          itemCount: featureList.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  animatedOpacity = true;
-                                  featureSelectedIndex = index;
-                                  animatedOpacity = false;
-                                });
-                              },
-                              child: Container(
-                                constraints: const BoxConstraints(
-                                  minHeight: 60,
-                                  maxHeight: 200,
-                                ),
-                                child: TimelineTile(
-                                  alignment: TimelineAlign.start,
-                                  beforeLineStyle: const LineStyle(
-                                    thickness: 8,
-                                    color: Color(0xFFD80202),
-                                  ),
-                                  afterLineStyle: const LineStyle(
-                                    thickness: 8,
-                                    color: Color(0xFFD80202),
-                                  ),
-                                  endChild: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const SizedBox(width: 24),
-                                      Text(
-                                        featureList[index],
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                          color: featureSelectedIndex == index
-                                              ? const Color(0xFFB40404)
-                                              : Colors.black,
-                                        ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        height: Get.height * 0.7,
+                        width: Get.width * 0.3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "FEATURES",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 48,
+                                fontWeight: FontWeight.w900,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+                            ListView.builder(
+                              itemCount: featureList.length,
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      animatedOpacity = true;
+                                      featureSelectedIndex = index;
+                                      animatedOpacity = false;
+                                    });
+                                  },
+                                  child: Container(
+                                    constraints: const BoxConstraints(
+                                      minHeight: 60,
+                                      maxHeight: 200,
+                                    ),
+                                    child: TimelineTile(
+                                      alignment: TimelineAlign.start,
+                                      beforeLineStyle: const LineStyle(
+                                        thickness: 8,
+                                        color: Color(0xFFD80202),
                                       ),
-                                      const SizedBox(width: 60),
-                                      featureSelectedIndex == index
-                                          ? Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  featureList[index],
-                                                  style: GoogleFonts.montserrat(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w500,
-                                                    color:
-                                                        const Color(0xFFB40404),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: 230,
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFFD9D9D9),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16),
-                                                  ),
-                                                  padding:
-                                                      const EdgeInsets.all(8),
-                                                  child: Text(
-                                                    "Creating one of the most exciting and lucrative gameplay for players."
-                                                        .toUpperCase(),
-                                                    style:
-                                                        GoogleFonts.montserrat(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      height: 1.5,
+                                      afterLineStyle: const LineStyle(
+                                        thickness: 8,
+                                        color: Color(0xFFD80202),
+                                      ),
+                                      endChild: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          const SizedBox(width: 24),
+                                          Text(
+                                            featureList[index],
+                                            style: GoogleFonts.montserrat(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              color:
+                                                  featureSelectedIndex == index
+                                                      ? const Color(0xFFB40404)
+                                                      : Colors.black,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 60),
+                                          featureSelectedIndex == index
+                                              ? Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      featureList[index],
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFFB40404),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          : const SizedBox(),
-                                    ],
-                                  ),
-                                  indicatorStyle: IndicatorStyle(
-                                    width: 36,
-                                    height: 12,
-                                    indicator: Container(
-                                      height: 12,
-                                      width: 36,
-                                      decoration: BoxDecoration(
-                                        color: featureSelectedIndex == index
-                                            ? Colors.black
-                                            : Colors.transparent,
-                                        borderRadius: BorderRadius.circular(4),
+                                                    Container(
+                                                      width: Get.height * 0.24,
+                                                      decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xFFD9D9D9),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
+                                                      ),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8),
+                                                      child: Text(
+                                                        featureSubTitleList[
+                                                                index]
+                                                            .toUpperCase(),
+                                                        // overflow: TextOverflow
+                                                        //     .ellipsis,
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                          fontSize: 14,
+                                                          color: Colors.black,
+                                                          height: 1.5,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              : const SizedBox(),
+                                        ],
+                                      ),
+                                      indicatorStyle: IndicatorStyle(
+                                        width: Get.height * 0.036,
+                                        height: Get.height * 0.012,
+                                        indicator: Container(
+                                          height: 12,
+                                          width: 36,
+                                          decoration: BoxDecoration(
+                                            color: featureSelectedIndex == index
+                                                ? Colors.black
+                                                : Colors.transparent,
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            );
-                          },
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        width: Get.width * 0.55,
+                        child: Image.asset(
+                          featurePictureList[featureSelectedIndex],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: Get.width * 0.55,
-                    child: Image.asset(
-                      featurePictureList[featureSelectedIndex],
-                      fit: BoxFit.cover,
+                  Text(
+                    featureSubTitleList[featureSelectedIndex].toUpperCase(),
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
                     ),
                   ),
                 ],

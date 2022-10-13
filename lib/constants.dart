@@ -6,6 +6,14 @@ List<String> featureList = [
   "NFT STAKING",
   "TOURNAMENTS",
 ];
+List<String> featureSubTitleList = [
+  "Creating one of the most exciting and lucrative gameplay for players.",
+  "Creating an accessible, efficient, and enjoyable predictive market for bettors.",
+  "Creating a unique breeding NFT mechanism with long-term sustainability.",
+  "Creating unique streaming experiences for users while generating revenue.",
+  "Making staking fun and lucrative for users.",
+  "Best-ever league matches are upcoming.",
+];
 
 List<String> featurePictureList = [
   'assets/images/race.png',
