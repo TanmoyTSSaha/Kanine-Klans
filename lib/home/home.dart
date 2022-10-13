@@ -11,6 +11,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late ScrollController homeScrollController;
+  int featureSelectedIndex = 0;
+
+  @override
+  void initState() {
+    homeScrollController = ScrollController(initialScrollOffset: 100);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +36,15 @@ class _HomeState extends State<Home> {
         elevation: 0,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -35,13 +52,21 @@ class _HomeState extends State<Home> {
               "HOME",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  1100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -49,13 +74,21 @@ class _HomeState extends State<Home> {
               "ABOUT US",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  2100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -63,13 +96,21 @@ class _HomeState extends State<Home> {
               "FEATURES",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  3100,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -77,13 +118,21 @@ class _HomeState extends State<Home> {
               "MILESTONE",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  4000,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -91,13 +140,21 @@ class _HomeState extends State<Home> {
               "KANNES",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                homeScrollController.animateTo(
+                  homeScrollController.position.maxScrollExtent,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              });
+            },
             style: TextButton.styleFrom(
               minimumSize: const Size(150, 60),
             ),
@@ -105,7 +162,7 @@ class _HomeState extends State<Home> {
               "CONTACT US",
               style: GoogleFonts.montserrat(
                 fontSize: 15,
-                color: Color(0xFFF5F5F5),
+                color: const Color(0xFFF5F5F5),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -113,7 +170,9 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SingleChildScrollView(
+        controller: homeScrollController,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               alignment: Alignment.bottomCenter,
@@ -152,14 +211,17 @@ class _HomeState extends State<Home> {
               alignment: Alignment.topRight,
               children: [
                 SizedBox(
-                  height: 800,
+                  height: 1000,
                   width: Get.width,
                 ),
                 Container(
                   width: Get.width,
-                  height: 600,
+                  height: 800,
                   color: const Color(0xFF151515),
-                  padding: const EdgeInsets.all(60),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 60,
+                    vertical: 150,
+                  ),
                   alignment: Alignment.bottomLeft,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -181,56 +243,10 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Container(
-                        height: 4,
-                        width: Get.width * 0.4,
-                        decoration:
-                            const BoxDecoration(color: Color(0xFF9F0505)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 12,
-                        ),
-                        child: Text(
-                          "KANINE KLANS: A Canineverse Game",
-                          style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.w800,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.white,
-                            fontSize: 32,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 12,
-                        ),
-                        child: Text(
-                          "Kanine Klans has a unique ecosystem that allows players to \nenter any race, for minimal price or free. With this economic\nmodel, the gameplay is very competitive, however, the\nrewards are still lucrative.\nPlayers compete against many other racers to earn a top\nposition. All players inside the game earn \$KK tokens, the\nplatform's utility token.",
-                          style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.w300,
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: -100,
-                  child: SizedBox(
-                    height: 1050,
-                    child: Image.asset(
-                      "assets/images/dog4.png",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ],
         ),
       ),
-    );
+   ] )]),));
   }
 }
