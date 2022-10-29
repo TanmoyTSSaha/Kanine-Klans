@@ -33,24 +33,26 @@ List<String> canidaePictureList = [
 
 List<String> teamImageList = [
   "assets/images/druv.png",
-  "assets/images/person.png",
-  "assets/images/person.png",
+  'assets/images/shauriya.png',
   "assets/images/anshuman.png",
+  "assets/images/durgesh.png",
   "assets/images/yazar.png",
   "assets/images/Neil.png",
   "assets/images/kevin.png",
   "assets/images/aman.png",
+  "assets/images/tanmoy.png",
 ];
 
 List<String> teamNameList = [
   "Dhruva Srivastava",
   "Shaurya Srivastava",
-  "Vinod Kumar",
   "Anshuman Das",
+  "Durgesh Kumar",
   "Mohd Yasar",
   "Neil Lasrado",
   "Kevin Pinto",
   "Amaan Ahmed",
+  "Tanmoy Saha",
 ];
 
 List<String> milestoneTitle = [

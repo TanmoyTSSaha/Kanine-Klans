@@ -1065,10 +1065,14 @@ class _HomeState extends State<Home> {
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: SvgPicture.asset(
-                      'assets/icons/logo.svg',
-                      height: Get.height * 0.1,
-                      width: Get.height * 0.1,
+                    child: Opacity(
+                      opacity: 0.5,
+                      child: SvgPicture.asset(
+                        'assets/icons/logo.svg',
+                        height: Get.height * 0.1,
+                        width: Get.height * 0.1,
+                        
+                      ),
                     ),
                   ),
                 ],
@@ -1091,56 +1095,137 @@ class _HomeState extends State<Home> {
               ),
             ),
             //Meet the team
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: Get.width,
-                  child: Image.asset(
-                    "assets/images/Asset_5.png",
-                    fit: BoxFit.cover,
-                  ),
+            Container(
+              height: Get.height,
+              width: Get.width,
+              padding: EdgeInsets.all(Get.height * 0.05),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/Asset_5.png"),
+                  fit: BoxFit.cover,
                 ),
-                GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      SizedBox(width: Get.height * 0.075),
+                      ProfileIntroImage(
+                        image: teamImageList[0],
+                        name: teamNameList[0].toUpperCase(),
+                        designation: 'CEO',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[1],
+                        name: teamNameList[1].toUpperCase(),
+                        designation: 'COO',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[2],
+                        name: teamNameList[2].toUpperCase(),
+                        designation: 'CMO',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[3],
+                        name: teamNameList[3].toUpperCase(),
+                        designation: 'WEB\nDEVELOPER',
+                        isCover: 2,
+                      ),
+                      SizedBox(width: Get.height * 0.075),
+                    ],
                   ),
-                  itemCount: teamNameList.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 300,
-                          width: 225,
-                          child: Image.asset(
-                            teamImageList[index],
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 225,
-                          child: Text(
-                            teamNameList[index].toUpperCase(),
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.montserrat(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w900,
-                              fontStyle: FontStyle.italic,
-                              decoration: TextDecoration.underline,
-                              decorationColor: const Color(0xFF7D0000),
-                              decorationThickness: 2,
-                              color: Colors.black,
-                            ),
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                ),
-              ],
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ProfileIntroImage(
+                        image: teamImageList[4],
+                        name: teamNameList[4].toUpperCase(),
+                        designation: 'CBDO',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[5],
+                        name: teamNameList[5].toUpperCase(),
+                        designation: '3D ARTIST',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[6],
+                        name: teamNameList[6].toUpperCase(),
+                        designation: 'GRAPHICS AND\nVIDEO EDITOR',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[7],
+                        name: teamNameList[7].toUpperCase(),
+                        designation: 'GRAPHICS\nDESIGNER',
+                      ),
+                      ProfileIntroImage(
+                        image: teamImageList[8],
+                        name: teamNameList[8].toUpperCase(),
+                        designation: 'WEB\nDEVELOPER',
+                        isCover: 2,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
+            // Stack(
+            //   alignment: Alignment.center,
+            //   children: [
+            //     SizedBox(
+            //       width: Get.width,
+            //       child: Image.asset(
+            //         "",
+            //         fit: BoxFit.cover,
+            //       ),
+            //     ),
+            //     GridView.builder(
+            //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //         crossAxisCount: 4,
+            //       ),
+            //       itemCount: teamNameList.length,
+            //       shrinkWrap: true,
+            //       itemBuilder: (context, index) {
+            //         return Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             SizedBox(
+            //               height: 300,
+            //               width: 225,
+            //               child: Image.asset(
+            //                 teamImageList[index],
+            //                 fit: BoxFit.contain,
+            //               ),
+            //             ),
+            //             SizedBox(
+            //               width: 225,
+            //               child: Text(
+            //                 teamNameList[index].toUpperCase(),
+            //                 textAlign: TextAlign.center,
+            //                 style: GoogleFonts.montserrat(
+            //                   fontSize: 24,
+            //                   fontWeight: FontWeight.w900,
+            //                   fontStyle: FontStyle.italic,
+            //                   decoration: TextDecoration.underline,
+            //                   decorationColor: const Color(0xFF7D0000),
+            //                   decorationThickness: 2,
+            //                   color: Colors.black,
+            //                 ),
+            //               ),
+            //             )
+            //           ],
+            //         );
+            //       },
+            //     ),
+            //   ],
+            // ),
             //Contact us
             SizedBox(
               height: 100,
@@ -1219,7 +1304,7 @@ class _HomeState extends State<Home> {
                           style: GoogleFonts.montserrat(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF4D4D4D),
+                            color: Colors.white,
                           ),
                         ),
                       ],
@@ -1239,6 +1324,87 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ProfileIntroImage extends StatelessWidget {
+  final String image;
+  final String name;
+  final String designation;
+  final int isCover;
+  const ProfileIntroImage({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.designation,
+    this.isCover = 1,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 250,
+          width: 175,
+          child: Image.asset(
+            image,
+            fit: isCover == 1
+                ? BoxFit.cover
+                : isCover == 2
+                    ? BoxFit.contain
+                    : BoxFit.fill,
+          ),
+        ),
+        Text(
+          name,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.montserrat(
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
+            fontStyle: FontStyle.italic,
+            decoration: TextDecoration.underline,
+            decorationColor: const Color(0xFF7D0000),
+            decorationThickness: 2,
+            color: Colors.black,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
+              designation,
+              textAlign: TextAlign.start,
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                fontStyle: FontStyle.italic,
+                // decoration: TextDecoration.underline,
+                // decorationColor: const Color(0xFF7D0000),
+                // decorationThickness: 2,
+                color: const Color(0xFF790000),
+              ),
+            ),
+            SizedBox(width: name.trim().length * 10),
+            SvgPicture.asset(
+              'assets/icons/twitter.svg',
+              color: const Color(0xFF55ACEE),
+              height: 24,
+              width: 24,
+            ),
+            SizedBox(width: Get.height * 0.02),
+            SvgPicture.asset(
+              'assets/icons/linkedin.svg',
+              color: const Color(0xFF0A66C2),
+              height: 24,
+              width: 24,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
